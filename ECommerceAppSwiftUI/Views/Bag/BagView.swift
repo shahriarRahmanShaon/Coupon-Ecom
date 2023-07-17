@@ -1,11 +1,3 @@
-//
-//  BagView.swift
-//  ECommerceAppSwiftUI
-//
-//  Created by Ayush Gupta on 26/11/19.
-//  Copyright © 2019 Ayush Gupta. All rights reserved.
-//
-
 import SwiftUI
 
 struct BagView: View {
@@ -106,7 +98,7 @@ struct BagView: View {
                                     .font(.custom(Constants.AppFont.regularFont, size: 13))
                                     .foregroundColor(Constants.AppColor.secondaryBlack)
                                 Spacer()
-                                Text("₹\(self.arrCloth.reduce(0, { $0 + $1.price }))")
+                                Text("Tk\(self.arrCloth.reduce(0, { $0 + $1.price }))")
                                     .font(.custom(Constants.AppFont.boldFont, size: 13))
                                     .foregroundColor(Constants.AppColor.secondaryBlack)
                             }
@@ -118,7 +110,7 @@ struct BagView: View {
                                     .font(.custom(Constants.AppFont.regularFont, size: 13))
                                     .foregroundColor(Constants.AppColor.secondaryBlack)
                                 Spacer()
-                                Text("₹\(self.deliveryCharges)")
+                                Text("Tk\(self.deliveryCharges)")
                                     .font(.custom(Constants.AppFont.boldFont, size: 13))
                                     .foregroundColor(Constants.AppColor.secondaryBlack)
                             }
@@ -130,7 +122,7 @@ struct BagView: View {
                                     .font(.custom(Constants.AppFont.regularFont, size: 13))
                                     .foregroundColor(Constants.AppColor.secondaryBlack)
                                 Spacer()
-                                Text("- ₹\(self.arrCloth.reduce(0, { $0 + ($1.price * $1.discount)/100}))")
+                                Text("- Tk\(self.arrCloth.reduce(0, { $0 + ($1.price * $1.discount)/100}))")
                                     .font(.custom(Constants.AppFont.boldFont, size: 13))
                                     .foregroundColor(Color.init(hex: "036440"))
                             }
@@ -145,7 +137,7 @@ struct BagView: View {
                                     .font(.custom(Constants.AppFont.boldFont, size: 16))
                                     .foregroundColor(Constants.AppColor.secondaryBlack)
                                 Spacer()
-                                Text("₹\(self.arrCloth.reduce(0, { $0 + ($1.price - ($1.price * $1.discount)/100)}))")
+                                Text("Tk\(self.arrCloth.reduce(0, { $0 + ($1.price - ($1.price * $1.discount)/100)}))")
                                     .font(.custom(Constants.AppFont.boldFont, size: 16))
                                     .foregroundColor(Constants.AppColor.secondaryBlack)
                             }
@@ -251,7 +243,7 @@ struct ItemCellTypeThree: View {
                         .cornerRadius(5)
                         .padding(.bottom, 10)
                         Spacer()
-                        Text("₹\(cloth.price - (cloth.price * cloth.discount)/100)")
+                        Text("Tk\(cloth.price - (cloth.price * cloth.discount)/100)")
                             .font(.custom(Constants.AppFont.semiBoldFont, size: 14))
                             .foregroundColor(Constants.AppColor.primaryBlack)
                     }

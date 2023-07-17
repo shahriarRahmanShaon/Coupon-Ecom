@@ -1,11 +1,3 @@
-//
-//  Shopping.swift
-//  ECommerceAppSwiftUI
-//
-//  Created by Ayush Gupta on 19/12/19.
-//  Copyright © 2019 Ayush Gupta. All rights reserved.
-//
-
 import SwiftUI
 
 struct Shopping: View {

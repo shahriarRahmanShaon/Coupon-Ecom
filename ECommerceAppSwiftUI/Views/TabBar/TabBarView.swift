@@ -1,11 +1,3 @@
-//
-//  TabBarView.swift
-//  ECommerceAppSwiftUI
-//
-//  Created by Ayush Gupta on 26/11/19.
-//  Copyright © 2019 Ayush Gupta. All rights reserved.
-//
-
 import SwiftUI
 
 struct TabBarView: View {
@@ -27,10 +19,10 @@ struct TabBarView: View {
                         Image(systemName: "cart.fill")
                         Text("Shop")
                     }.tag(1)
-                FavoriteView()
+                CouponView()
                     .tabItem {
-                        Image(systemName: "heart.fill")
-                        Text("Favorite")
+                        Image(systemName: "tag.square.fill")
+                        Text("Coupon")
                     }.tag(2)
                 BagView()
                     .tabItem {

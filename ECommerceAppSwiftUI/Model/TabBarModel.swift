@@ -1,11 +1,3 @@
-//
-//  TabBarModel.swift
-//  ECommerceAppSwiftUI
-//
-//  Created by Ayush Gupta on 30/12/19.
-//  Copyright © 2019 Ayush Gupta. All rights reserved.
-//
-
 import SwiftUI
 
 struct TabBarModel: Identifiable {

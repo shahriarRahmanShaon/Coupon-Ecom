@@ -1,11 +1,3 @@
-//
-//  StrokeText.swift
-//  ECommerceAppSwiftUI
-//
-//  Created by Ayush Gupta on 27/12/19.
-//  Copyright © 2019 Ayush Gupta. All rights reserved.
-//
-
 import SwiftUI
 
 struct StrokeText: View {

@@ -1,11 +1,3 @@
-//
-//  ItemRow.swift
-//  ECommerceAppSwiftUI
-//
-//  Created by M_AMBIN03921 on 20/04/21.
-//  Copyright © 2021 Ayush Gupta. All rights reserved.
-//
-
 import SwiftUI
 
 struct ItemRow: View {
@@ -64,10 +56,10 @@ struct ItemRow: View {
                     .foregroundColor(Constants.AppColor.secondaryBlack)
                     .padding([.horizontal], 5)
                 HStack {
-                    Text("₹\(cloth.price - (cloth.price * cloth.discount)/100)")
+                    Text("Tk\(cloth.price - (cloth.price * cloth.discount)/100)")
                         .font(.custom(Constants.AppFont.semiBoldFont, size: 13))
                         .foregroundColor(Constants.AppColor.primaryBlack)
-                    Text("₹\(cloth.price)")
+                    Text("Tk\(cloth.price)")
                         .font(.custom(Constants.AppFont.regularFont, size: 11))
                         .foregroundColor(.gray) .strikethrough()
                     Text(cloth.type == "new" ? "" : "\(cloth.discount)% OFF")

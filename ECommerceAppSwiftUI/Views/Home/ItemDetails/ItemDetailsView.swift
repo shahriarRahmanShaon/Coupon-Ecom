@@ -1,11 +1,3 @@
-//
-//  ItemDetailsView.swift
-//  ECommerceAppSwiftUI
-//
-//  Created by Ayush Gupta on 10/12/19.
-//  Copyright © 2019 Ayush Gupta. All rights reserved.
-//
-
 import SwiftUI
 
 struct ItemDetailsView: View {
@@ -17,7 +9,7 @@ struct ItemDetailsView: View {
     @State private var size: String = ""
     @Binding var show : Bool
     
-    var arrImage = ["greenDressCover", "greenDressCover", "greenDressCover", "greenDressCover"]
+    var arrImage = ["kidsDress", "tshirts", "overcoat", "blackTop"]
     var arrSize = ["S", "M", "L", "XL"]
     var arrColor = ["800000", "FFA500", "2E8B57", "1E90FF", "708090"]
     
@@ -229,10 +221,10 @@ struct ItemDetailsView: View {
                                 .padding(.bottom, 5)
                             
                             HStack {
-                                Text("₹\(cloth.price - (cloth.price * cloth.discount)/100)")
+                                Text("Tk\(cloth.price - (cloth.price * cloth.discount)/100)")
                                     .font(.custom(Constants.AppFont.boldFont, size: 14))
                                     .foregroundColor(Constants.AppColor.secondaryBlack)
-                                Text("₹\(cloth.price)")
+                                Text("Tk\(cloth.price)")
                                     .font(.custom(Constants.AppFont.regularFont, size: 13))
                                     .foregroundColor(.gray) .strikethrough()
                                 Text(cloth.type == "new" ? "" : "\(cloth.discount)% OFF")

@@ -1,11 +1,3 @@
-//
-//  ProfileView.swift
-//  ECommerceAppSwiftUI
-//
-//  Created by Ayush Gupta on 26/11/19.
-//  Copyright © 2019 Ayush Gupta. All rights reserved.
-//
-
 import SwiftUI
 import Combine
 
@@ -31,7 +23,7 @@ struct ProfileView: View {
             VStack(alignment: .leading) {
                 NavigationBarView()
                 HStack {
-                    Image("banner2")
+                    Image("banner4")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 80, height: 80)
