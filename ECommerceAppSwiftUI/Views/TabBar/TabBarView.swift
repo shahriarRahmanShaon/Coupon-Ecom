@@ -3,6 +3,7 @@ import SwiftUI
 struct TabBarView: View {
     
     @State var selected = 0
+    var userMode: UserModel
     
     var body: some View {
         ZStack {
@@ -19,7 +20,7 @@ struct TabBarView: View {
                         Image(systemName: "cart.fill")
                         Text("Shop")
                     }.tag(1)
-                CouponView()
+                CouponView(user: userMode)
                     .tabItem {
                         Image(systemName: "tag.square.fill")
                         Text("Coupon")
@@ -43,8 +44,3 @@ struct TabBarView: View {
     }
 }
 
-struct TabBarView_Previews: PreviewProvider {
-    static var previews: some View {
-        TabBarView()
-    }
-}
