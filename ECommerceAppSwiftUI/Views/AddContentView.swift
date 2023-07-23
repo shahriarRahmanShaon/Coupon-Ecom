@@ -1,5 +1,9 @@
 import SwiftUI
 
+enum chooseType{
+    case camera
+    case photoLibrary
+}
 struct AddContentView: View {
     @State private var clothName = ""
     @State private var description = ""
@@ -18,7 +22,7 @@ struct AddContentView: View {
     @State private var isShowingImagePicker = false
     @State private var isShowingCamera = false
     @State private var selectedImage: Image? = nil
-    @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    @State private var sourceType: UIImagePickerController.SourceType = .camera
     
     var body: some View {
         Form {
