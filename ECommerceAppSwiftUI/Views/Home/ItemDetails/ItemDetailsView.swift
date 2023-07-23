@@ -273,8 +273,4 @@ struct ItemDetailsView: View {
     }
 }
 
-struct ItemDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        ItemDetailsView(show: .constant(false), cloth: Cloth(name: "Women Printed Flare Dress", description: "Green printed woven fit and flare dress, has a notched lapel collar and sleevesless.", imageURL: "greenDress", price: 2149, company: "Chemistry Edition", rating: 4, type: "sale", isFavorite: false, color: "Green", size: "L", discount: 40))
-    }
-}
+

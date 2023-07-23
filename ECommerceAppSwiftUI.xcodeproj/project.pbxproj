@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		004548382A653E9300AD23C9 /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004548372A653E9300AD23C9 /* CouponView.swift */; };
+		004658D32A6D505600EFB473 /* AddContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004658D22A6D505600EFB473 /* AddContentView.swift */; };
 		0093288B2A65ACB40020923B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0093288A2A65ACB40020923B /* HomeViewModel.swift */; };
 		00C5E52F2A69881E00638F10 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C5E52E2A69881E00638F10 /* Authentication.swift */; };
 		00C5E5312A69889000638F10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C5E5302A69889000638F10 /* ContentView.swift */; };
@@ -66,6 +67,7 @@
 
 /* Begin PBXFileReference section */
 		004548372A653E9300AD23C9 /* CouponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponView.swift; sourceTree = "<group>"; };
+		004658D22A6D505600EFB473 /* AddContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentView.swift; sourceTree = "<group>"; };
 		0093288A2A65ACB40020923B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		00C5E52E2A69881E00638F10 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		00C5E5302A69889000638F10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				2AF4288C238FA67500296AAE /* Profile */,
 				00C5E52E2A69881E00638F10 /* Authentication.swift */,
 				00C5E5302A69889000638F10 /* ContentView.swift */,
+				004658D22A6D505600EFB473 /* AddContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 				00C5E52F2A69881E00638F10 /* Authentication.swift in Sources */,
 				599FD17026C9223E00DFCF64 /* LineView.swift in Sources */,
 				2A9CBA3F23951F9F009EA42D /* ProfileModel.swift in Sources */,
+				004658D32A6D505600EFB473 /* AddContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

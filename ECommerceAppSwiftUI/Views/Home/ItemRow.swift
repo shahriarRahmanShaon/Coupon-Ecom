@@ -36,7 +36,7 @@ struct ItemRow: View {
                 Text("")
             }
             VStack(alignment: .leading) {
-                Image(cloth.imageURL).renderingMode(.original)
+                cloth.imageURL!.renderingMode(.original)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: UIScreen.main.bounds.width / 2 - 40, height: 190)
@@ -79,8 +79,3 @@ struct ItemRow: View {
     }
 }
 
-struct ItemRow_Previews: PreviewProvider {
-    static var previews: some View {
-        ItemRow(cloth: Cloth(name: "Printed Long Top", description: "Red floral print long top, has a round collar, full sleeves and available in different sizes for women.", imageURL: "redDress", price: 2399, company: "Rain & Rainbow", rating: 4, type: "sale", isFavorite: false, color: "Red", size: "S", discount: 40))
-    }
-}

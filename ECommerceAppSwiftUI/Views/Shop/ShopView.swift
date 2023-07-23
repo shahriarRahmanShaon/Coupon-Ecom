@@ -162,7 +162,7 @@ struct ItemCellTypeTwo: View {
                 .shadow(color: Color.init(hex: "dddddd"), radius: 2, x: 0.8, y: 0.8)
             
             HStack() {
-                Image(cloth.imageURL)
+                cloth.imageURL!
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 130, height: 170)

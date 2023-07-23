@@ -14,7 +14,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: ContentView())
+            @StateObject var viewModel = ClothViewModel()
+            @StateObject var userViewModel = UserViewModel()
+            window.rootViewController = UIHostingController(rootView: ContentView().environmentObject(viewModel).environmentObject(userViewModel))
             self.window = window
             window.makeKeyAndVisible()
         }

@@ -45,9 +45,16 @@ struct ProfileView: View {
                         ForEach(self.arrProfile, id: \.id) { profile in
                             ProfileRow(profile: profile)
                         }
+                        NavigationLink {
+                            AuthenticationView()
+                        } label: {
+                            Text("Log Out").foregroundColor(.red)
+                        }
                     }
                     .padding(.horizontal, 15)
                 })
+               
+
                 
                 Spacer()
             }

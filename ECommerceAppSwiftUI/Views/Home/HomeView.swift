@@ -2,9 +2,9 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @EnvironmentObject var viewModel: ClothViewModel
     @State var index = 0
     var arrImage = ["collage", "collage", "collage", "collage"]
-    let arrCloth = Cloth.all()
     @State private var selection: Int? = nil
     @State var show = false
     
@@ -69,7 +69,7 @@ struct HomeView: View {
             }
             ScrollView(.horizontal, showsIndicators: false, content: {
                 HStack(spacing: 5) {
-                    ForEach(self.arrCloth.filter { $0.type == "sale" }, id: \.id) { cloth in
+                    ForEach(self.viewModel.cloths.filter { $0.type == "sale" }, id: \.id) { cloth in
                         ItemRow(cloth: cloth)
                     }
                 }
@@ -102,7 +102,7 @@ struct HomeView: View {
             }
             ScrollView(.horizontal, showsIndicators: false, content: {
                 HStack(spacing: 5) {
-                    ForEach(self.arrCloth.filter { $0.type == "new" }, id: \.id) { cloth in
+                    ForEach(self.viewModel.cloths.filter { $0.type == "new" }, id: \.id) { cloth in
                         ItemRow(cloth: cloth)
                     }
                 }

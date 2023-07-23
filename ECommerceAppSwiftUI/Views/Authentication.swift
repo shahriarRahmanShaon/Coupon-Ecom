@@ -40,9 +40,9 @@ class UserViewModel: ObservableObject {
 //}
 
 
-struct Authentication: View {
+struct AuthenticationView: View {
     
-    @ObservedObject var userViewModel: UserViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
     @State var email: String = ""
     @State var password: String = ""
     @State var showPassword: Bool = false
