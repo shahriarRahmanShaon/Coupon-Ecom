@@ -13,6 +13,7 @@
 		00C5E52F2A69881E00638F10 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C5E52E2A69881E00638F10 /* Authentication.swift */; };
 		00C5E5312A69889000638F10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C5E5302A69889000638F10 /* ContentView.swift */; };
 		00C925C22A652B8100409E68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00C925C12A652B8100409E68 /* GoogleService-Info.plist */; };
+		00EC5B572A6DA2FA00163E01 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EC5B562A6DA2FA00163E01 /* AuthenticationViewModel.swift */; };
 		2A08718D238D4CA6002F1E61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A08718C238D4CA6002F1E61 /* AppDelegate.swift */; };
 		2A08718F238D4CA6002F1E61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A08718E238D4CA6002F1E61 /* SceneDelegate.swift */; };
 		2A087191238D4CA7002F1E61 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A087190238D4CA7002F1E61 /* TabBarView.swift */; };
@@ -72,6 +73,7 @@
 		00C5E52E2A69881E00638F10 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		00C5E5302A69889000638F10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		00C925C12A652B8100409E68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		00EC5B562A6DA2FA00163E01 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		05CD4A934CD25B450E25554F /* Pods-ECommerceAppSwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ECommerceAppSwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-ECommerceAppSwiftUI/Pods-ECommerceAppSwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
 		2A087189238D4CA6002F1E61 /* ECommerceAppSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ECommerceAppSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A08718C238D4CA6002F1E61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				0093288A2A65ACB40020923B /* HomeViewModel.swift */,
+				00EC5B562A6DA2FA00163E01 /* AuthenticationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				2A1CF24523A26B6500BFA149 /* CheckOutView.swift in Sources */,
 				004548382A653E9300AD23C9 /* CouponView.swift in Sources */,
 				00C5E52F2A69881E00638F10 /* Authentication.swift in Sources */,
+				00EC5B572A6DA2FA00163E01 /* AuthenticationViewModel.swift in Sources */,
 				599FD17026C9223E00DFCF64 /* LineView.swift in Sources */,
 				2A9CBA3F23951F9F009EA42D /* ProfileModel.swift in Sources */,
 				004658D32A6D505600EFB473 /* AddContentView.swift in Sources */,

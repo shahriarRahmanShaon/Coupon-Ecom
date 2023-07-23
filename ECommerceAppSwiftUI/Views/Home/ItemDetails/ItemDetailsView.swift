@@ -61,7 +61,7 @@ struct ItemDetailsView: View {
             .resizable()
             .scaledToFill()
         .aspectRatio(4/3, contentMode: .fit)
-//        .frame(width: UIScreen.main.bounds.width, height: 250)
+       .frame(width: UIScreen.main.bounds.width, height: 250)
     }
     
     fileprivate func SimilerProduct() -> some View {
@@ -255,12 +255,12 @@ struct ItemDetailsView: View {
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .background(Color.white)
                         .padding(.top, -3)
-                        
+                        AddToCartButton()
                         SimilerProduct()
                             .padding(.init(top: 5, leading: 0, bottom: 10, trailing: 0))
                     }
                 }
-                AddToCartButton()
+                
             }
         }.edgesIgnoringSafeArea(.bottom)
             .navigationBarTitle(Text(""), displayMode: .inline)
