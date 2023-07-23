@@ -270,6 +270,9 @@ struct ItemDetailsView: View {
             .navigationBarTitle(Text(""), displayMode: .inline)
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
+            .onAppear {
+                print(cloth.name)
+            }
     }
 }
 

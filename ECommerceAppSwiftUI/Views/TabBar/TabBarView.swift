@@ -22,11 +22,11 @@ struct TabBarView: View {
                             Image(systemName: "cart.fill")
                             Text("Shop")
                         }.tag(1)
-                    CouponView(user: userMode).environmentObject(viewModel)
-                        .tabItem {
-                            Image(systemName: "tag.square.fill")
-                            Text("Coupon")
-                        }.tag(2)
+//                    CouponView(user: userMode).environmentObject(viewModel)
+//                        .tabItem {
+//                            Image(systemName: "tag.square.fill")
+//                            Text("Coupon")
+//                        }.tag(2)
                     BagView().environmentObject(viewModel)
                         .tabItem {
                             Image(systemName: "bag.fill")
@@ -38,11 +38,11 @@ struct TabBarView: View {
                             Text("Profile")
                         }.tag(4)
                 }else{
-                    CouponView(user: userMode).environmentObject(viewModel)
-                        .tabItem {
-                            Image(systemName: "tag.square.fill")
-                            Text("Add Coupon")
-                        }.tag(1)
+//                    CouponView(user: userMode).environmentObject(viewModel)
+//                        .tabItem {
+//                            Image(systemName: "tag.square.fill")
+//                            Text("Add Coupon")
+//                        }.tag(1)
                     AddContentView().environmentObject(viewModel)
                         .tabItem {
                             Image(systemName: "plus.circle.fill")
