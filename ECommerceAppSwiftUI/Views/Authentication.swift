@@ -10,37 +10,12 @@ struct UserModel: Identifiable {
     var role: String
     var name: String
     var shippingAddress: String
+    var companyName: String?
 }
-
 
 class UserViewModel: ObservableObject {
     @Published var currentUser: UserModel? = nil
 }
-
-//struct Authentication: View {
-//    @ObservedObject var userViewModel: UserViewModel
-//    @State private var email: String = ""
-//    @State private var password: String = ""
-//    @State private var role: String = "user"
-//
-//    var body: some View {
-//        Form {
-//            TextField("Email", text: $email)
-//            SecureField("Password", text: $password)
-//            Picker("Role", selection: $role) {
-//                Text("User").tag("user")
-//                Text("Vendor").tag("vendor")
-//            }
-//            Button(action: {
-//                // Assuming this signs up/logs in the user and updates the user in your view model
-//                let newUser = UserModel(email: email, password: password, role: role)
-//                userViewModel.currentUser = newUser
-//            }) {
-//                Text("Sign Up/Login")
-//            }
-//        }
-//    }
-//}
 
 
 struct AuthenticationView: View {
@@ -52,6 +27,7 @@ struct AuthenticationView: View {
     @State private var name: String = ""
     @State private var shippingAddress: String = ""
     @State private var isLoading: Bool = false
+    @State private var companyName: String = ""
     
     var isSignInButtonDisabled: Bool {
         [email, password, name, shippingAddress].contains(where: \.isEmpty) || !isValidEmail(email)
@@ -83,21 +59,23 @@ struct AuthenticationView: View {
                     .padding(.horizontal)
             }
             
-            TextField("Name", text: $name)
-                .padding(10)
-                .overlay {
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(.blue, lineWidth: 2)
-                }
-                .padding(.horizontal)
-            
-            TextField("Shipping Address", text: $shippingAddress)
-                .padding(10)
-                .overlay {
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(.blue, lineWidth: 2)
-                }
-                .padding(.horizontal)
+            Group{
+                TextField("Name", text: $name)
+                    .padding(10)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.blue, lineWidth: 2)
+                    }
+                    .padding(.horizontal)
+                
+                TextField("Shipping Address", text: $shippingAddress)
+                    .padding(10)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.blue, lineWidth: 2)
+                    }
+                    .padding(.horizontal)
+            }
             
             HStack {
                 Group {
@@ -129,17 +107,24 @@ struct AuthenticationView: View {
                     Text("Vendor").tag("vendor")
                 }
             }.padding()
+            if role == "vendor" {
+                            TextField("Your Company Name", text: $companyName)
+                                .padding(10)
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(.blue, lineWidth: 2)
+                                }
+                                .padding(.horizontal)
+                        }
             Spacer()
             
             Button {
                 isLoading = true // Show loader when the button is tapped
-                let newUser = UserModel(email: email, password: password, role: role, name: name, shippingAddress: shippingAddress)
+                let newUser = UserModel(email: email, password: password, role: role, name: name, shippingAddress: shippingAddress, companyName: companyName)
                 // Simulate a delay to simulate the sign-in process
                 DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                     isLoading = false // Hide loader after the sign-in process is complete
-                    withAnimation {
-                        userViewModel.currentUser = newUser
-                    }
+                    userViewModel.currentUser = newUser
                 }
             } label: {
                 if isLoading {

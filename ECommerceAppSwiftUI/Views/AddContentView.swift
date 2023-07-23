@@ -23,6 +23,7 @@ struct AddContentView: View {
     @State private var isShowingCamera = false
     @State private var selectedImage: Image? = nil
     @State private var sourceType: UIImagePickerController.SourceType = .camera
+    @EnvironmentObject var userViewModel: UserViewModel
     
     var body: some View {
         Form {
@@ -53,6 +54,9 @@ struct AddContentView: View {
             }
         }
         .navigationTitle("Add Cloth")
+        .onAppear(perform: {
+            company = userViewModel.currentUser?.companyName ?? ""
+        })
         .actionSheet(isPresented: $isShowingCamera) {
             ActionSheet(title: Text("How do you want to upload?"), buttons: [
                 .default(Text("Camera"), action: {
