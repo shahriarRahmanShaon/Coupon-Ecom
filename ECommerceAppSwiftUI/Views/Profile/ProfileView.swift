@@ -5,6 +5,8 @@ struct ProfileView: View {
     
     @State var selection: Int? = nil
     let arrProfile = ProfileModel.all()
+    @EnvironmentObject var userViewModel: UserViewModel
+    @Environment(\.presentationMode) var presentationMode
     
     fileprivate func NavigationBarView() -> some View {
         return HStack {
@@ -30,10 +32,10 @@ struct ProfileView: View {
                         .clipShape(Circle())
                         .padding(.leading, 15)
                     VStack(alignment: .leading) {
-                        Text("Your Name")
+                        Text(userViewModel.currentUser?.name ?? "")
                             .font(.headline)
                             .bold()
-                        Text("youremail@gmail.com")
+                        Text(userViewModel.currentUser?.email ?? "")
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }.padding(.horizontal, 5)
@@ -45,10 +47,16 @@ struct ProfileView: View {
                         ForEach(self.arrProfile, id: \.id) { profile in
                             ProfileRow(profile: profile)
                         }
-                        NavigationLink {
-                            AuthenticationView()
+                        Button {
+                            withAnimation {
+                                userViewModel.currentUser = nil
+                                presentationMode.wrappedValue.dismiss()
+                            }
                         } label: {
-                            Text("Log Out").foregroundColor(.red)
+                            Text("Log Out")
+                                .foregroundColor(.red)
+                                .padding(.top, 35)
+                                
                         }
                     }
                     .padding(.horizontal, 15)

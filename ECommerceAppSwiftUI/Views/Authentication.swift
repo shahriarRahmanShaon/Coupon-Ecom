@@ -8,7 +8,10 @@ struct UserModel: Identifiable {
     var email: String
     var password: String
     var role: String
+    var name: String
+    var shippingAddress: String
 }
+
 
 class UserViewModel: ObservableObject {
     @Published var currentUser: UserModel? = nil
@@ -19,7 +22,7 @@ class UserViewModel: ObservableObject {
 //    @State private var email: String = ""
 //    @State private var password: String = ""
 //    @State private var role: String = "user"
-//    
+//
 //    var body: some View {
 //        Form {
 //            TextField("Email", text: $email)
@@ -41,84 +44,140 @@ class UserViewModel: ObservableObject {
 
 
 struct AuthenticationView: View {
-    
     @EnvironmentObject var userViewModel: UserViewModel
-    @State var email: String = ""
-    @State var password: String = ""
-    @State var showPassword: Bool = false
+    @State private var email: String = ""
+    @State private var password: String = ""
+    @State private var showPassword: Bool = false
     @State private var role: String = "user"
+    @State private var name: String = ""
+    @State private var shippingAddress: String = ""
+    @State private var isLoading: Bool = false
     
     var isSignInButtonDisabled: Bool {
-        [email, password].contains(where: \.isEmpty)
+        [email, password, name, shippingAddress].contains(where: \.isEmpty) || !isValidEmail(email)
     }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
+            Image("c").resizable()
+                .aspectRatio(contentMode: .fit)
             Spacer()
             
             TextField("Email",
-                      text: $email ,
-                      prompt: Text("Email").foregroundColor(.blue)
+                      text: $email,
+                      prompt: Text("Email")
             )
+            .textContentType(.emailAddress) // Set the keyboard type to email address
+            .keyboardType(.emailAddress)
+            .autocapitalization(.none)
             .padding(10)
             .overlay {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(.blue, lineWidth: 2)
             }
             .padding(.horizontal)
+            
+            if !isValidEmail(email) && !email.isEmpty {
+                Text("Please enter a valid email address")
+                    .foregroundColor(.red)
+                    .padding(.horizontal)
+            }
+            
+            TextField("Name", text: $name)
+                .padding(10)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(.blue, lineWidth: 2)
+                }
+                .padding(.horizontal)
+            
+            TextField("Shipping Address", text: $shippingAddress)
+                .padding(10)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(.blue, lineWidth: 2)
+                }
+                .padding(.horizontal)
+            
             HStack {
                 Group {
                     if showPassword {
-                        TextField("Password", // how to create a secure text field
-                                    text: $password,
-                                    prompt: Text("Password").foregroundColor(.red)) // How to change the color of the TextField Placeholder
+                        TextField("Password", text: $password, prompt: Text("Password").foregroundColor(.red))
                     } else {
-                        SecureField("Password", // how to create a secure text field
-                                    text: $password,
-                                    prompt: Text("Password").foregroundColor(.red)) // How to change the color of the TextField Placeholder
+                        SecureField("Password", text: $password, prompt: Text("Password").foregroundColor(.red))
                     }
                 }
                 .padding(10)
                 .overlay {
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(.red, lineWidth: 2) // How to add rounded corner to a TextField and change it colour
+                        .stroke(.red, lineWidth: 2)
                 }
-
+                
                 Button {
                     showPassword.toggle()
                 } label: {
                     Image(systemName: showPassword ? "eye.slash" : "eye")
-                        .foregroundColor(.red) // how to change image based in a State variable
+                        .foregroundColor(.red)
                 }
-
             }.padding(.horizontal)
-
-            Picker("Role", selection: $role) {
-                Text("User").tag("user")
-                Text("Vendor").tag("vendor")
-            }
+            
+            HStack{
+                Text("Login as: ")
+                Spacer()
+                Picker("Role", selection: $role) {
+                    Text("User").tag("user")
+                    Text("Vendor").tag("vendor")
+                }
+            }.padding()
             Spacer()
-
+            
             Button {
-                let newUser = UserModel(email: email, password: password, role: role)
-                userViewModel.currentUser = newUser
+                isLoading = true // Show loader when the button is tapped
+                let newUser = UserModel(email: email, password: password, role: role, name: name, shippingAddress: shippingAddress)
+                // Simulate a delay to simulate the sign-in process
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                    isLoading = false // Hide loader after the sign-in process is complete
+                    withAnimation {
+                        userViewModel.currentUser = newUser
+                    }
+                }
             } label: {
-                Text("Sign In")
-                    .font(.title2)
-                    .bold()
-                    .foregroundColor(.white)
+                if isLoading {
+                    ProgressView() // Built-in loader (activity indicator)
+                        .foregroundColor(.white)
+                        .padding(.vertical)
+                        .frame(maxWidth: .infinity)
+                        .background(LinearGradient(colors: [.blue, .red], startPoint: .topLeading, endPoint: .bottomTrailing))
+                        .cornerRadius(20)
+                } else {
+                    Text("Sign In")
+                        .font(.title2)
+                        .bold()
+                        .foregroundColor(.white)
+                        .padding(.vertical)
+                        .frame(maxWidth: .infinity)
+                        .background(LinearGradient(colors: [.blue, .red], startPoint: .topLeading, endPoint: .bottomTrailing))
+                        .cornerRadius(20)
+                }
             }
             .frame(height: 50)
-            .frame(maxWidth: .infinity) // how to make a button fill all the space available horizontaly
+            .frame(maxWidth: .infinity)
             .background(
-                isSignInButtonDisabled ? // how to add a gradient to a button in SwiftUI if the button is disabled
+                isSignInButtonDisabled ?
                 LinearGradient(colors: [.gray], startPoint: .topLeading, endPoint: .bottomTrailing) :
                     LinearGradient(colors: [.blue, .red], startPoint: .topLeading, endPoint: .bottomTrailing)
             )
             .cornerRadius(20)
-            .disabled(isSignInButtonDisabled) // how to disable while some condition is applied
+            .disabled(isSignInButtonDisabled)
             .padding()
         }
+        .background(Color("c-com"))
+    }
+    
+    private func isValidEmail(_ email: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return emailPredicate.evaluate(with: email)
     }
 }
 

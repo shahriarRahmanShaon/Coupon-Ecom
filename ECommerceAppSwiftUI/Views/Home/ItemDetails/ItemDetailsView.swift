@@ -56,14 +56,10 @@ struct ItemDetailsView: View {
         //                .shadow(color: Constants.AppColor.shadowColor, radius: 2, x: 0.8, y: 0.8)
     }
     
-    fileprivate func ImageSlider() -> some View {
-        return PagingView(index: $index.animation(), maxIndex: self.arrImage.count - 1) {
-            ForEach(self.arrImage, id: \.self) { image in
-                Image(image)
-                    .resizable()
-                    .scaledToFill()
-            }
-        }
+    fileprivate func ImageSlider(image: Image) -> some View {
+        image
+            .resizable()
+            .scaledToFill()
         .aspectRatio(4/3, contentMode: .fit)
 //        .frame(width: UIScreen.main.bounds.width, height: 250)
     }
@@ -183,7 +179,7 @@ struct ItemDetailsView: View {
                     Constants.AppColor.lightGrayColor
                         .edgesIgnoringSafeArea(.all)
                     VStack(alignment: .leading) {
-                        ImageSlider()
+                        ImageSlider(image: cloth.imageURL!)
                         
                         VStack(alignment: .leading) {
                             HStack {
@@ -264,15 +260,12 @@ struct ItemDetailsView: View {
                             .padding(.init(top: 5, leading: 0, bottom: 10, trailing: 0))
                     }
                 }
+                AddToCartButton()
             }
-            AddToCartButton()
         }.edgesIgnoringSafeArea(.bottom)
             .navigationBarTitle(Text(""), displayMode: .inline)
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
-            .onAppear {
-                print(cloth.name)
-            }
     }
 }
 
